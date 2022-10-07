@@ -6,16 +6,19 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-airports = [%w[Prague PRG],
-            %w[Birmingham BHX],
-            %w[Düsseldorf DUS],
-            %w[Rome FCO],
-            %w[Athenas ATH],
-            %w[Istanbul SAW],
-            %w[Vienna VIE],
-            %w[Brussels BRU],
-            %w[London LTN]]
+# Airports
+PRG = Airport.create(name: 'Prague', code: 'PRG')
+BHX = Airport.create(name: 'Birmingham', code: 'BHX')
+DUS = Airport.create(name: 'Düsseldorf', code: 'DUS')
+FCO = Airport.create(name: 'Rome', code: 'FCO')
+ATH = Airport.create(name: 'Athenas', code: 'ATH')
+SAW = Airport.create(name: 'Istanbul', code: 'SAW')
+VIE = Airport.create(name: 'Vienna', code: 'VIE')
+BRU = Airport.create(name: 'Brussels', code: 'BRU')
+LTN = Airport.create(name: 'London', code: 'LTN')
 
-airports.each do |airport|
-  Airport.create(name: airport[0], code: airport[1])
-end
+# Flights
+FLIGHT1 = Flight.create(departure_datetime: DateTime.new(2023, 4, 23, 22, 35, 0),
+                        arrival_datetime: DateTime.new(2023, 4, 23, 23, 40, 0),
+                        departure_airport_id: VIE.id,
+                        arrival_airport_id: PRG.id)
