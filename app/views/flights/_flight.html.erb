@@ -1,22 +1,22 @@
 <div id="<%= dom_id flight %>">
   <p>
     <strong>Arrival airport:</strong>
-    <%= flight.arrival_airport_id %>
+    <%= flight.arrival_airport.name %>
   </p>
 
   <p>
-    <strong>Departing airport:</strong>
-    <%= flight.departing_airport_id %>
+    <strong>Departure airport:</strong>
+    <%= flight.departure_airport.name %>
   </p>
 
   <p>
     <strong>Departure:</strong>
-    <%= flight.departure %>
+    <%= flight.departure_datetime %>
   </p>
 
   <p>
-    <strong>Flight duration:</strong>
-    <%= flight.flight_duration %>
+    <strong>Arrival:</strong>
+    <%= flight.arrival_datetime %>
   </p>
 
 </div>

@@ -13,22 +13,22 @@
 
   <div>
     <%= form.label :arrival_airport_id, style: "display: block" %>
-    <%= form.text_field :arrival_airport_id %>
+    <%= form.select :arrival_airport_id, @airport_options %>
   </div>
 
   <div>
-    <%= form.label :departing_airport_id, style: "display: block" %>
-    <%= form.text_field :departing_airport_id %>
+    <%= form.label :departure_airport_id, style: "display: block" %>
+    <%= form.select :departure_airport_id, @airport_options %>
   </div>
 
   <div>
     <%= form.label :departure, style: "display: block" %>
-    <%= form.datetime_field :departure %>
+    <%= form.datetime_field :departure_datetime %>
   </div>
 
   <div>
-    <%= form.label :flight_duration, style: "display: block" %>
-    <%= form.time_field :flight_duration %>
+    <%= form.label :arrival, style: "display: block" %>
+    <%= form.datetime_field :arrival_datetime %>
   </div>
 
   <div>
