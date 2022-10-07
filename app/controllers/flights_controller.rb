@@ -3,7 +3,8 @@ class FlightsController < ApplicationController
 
   # GET /flights or /flights.json
   def index
-    @flights = Flight.all
+    @flights = Flight.search(params[:departure_airport_id], params[:arrival_airport_id])
+    airport_options
   end
 
   # GET /flights/1 or /flights/1.json
@@ -11,18 +12,18 @@ class FlightsController < ApplicationController
 
   # GET /flights/new
   def new
-    @airport_options = Airport.all.map { |airport| [airport.name, airport.id] }
+    airport_options
     @flight = Flight.new
   end
 
   # GET /flights/1/edit
   def edit
-    @airport_options = Airport.all.map { |airport| [airport.name, airport.id] }
+    airport_options
   end
 
   # POST /flights or /flights.json
   def create
-    @airport_options = Airport.all.map { |airport| [airport.name, airport.id] }
+    airport_options
     @flight = Flight.new(flight_params)
 
     if @flight.save
@@ -34,7 +35,7 @@ class FlightsController < ApplicationController
 
   # PATCH/PUT /flights/1 or /flights/1.json
   def update
-    @airport_options = Airport.all.map { |airport| [airport.name, airport.id] }
+    airport_options
     if @flight.update(flight_params)
       redirect_to flight_url(@flight), notice: 'Flight was successfully updated.'
     else
@@ -49,6 +50,10 @@ class FlightsController < ApplicationController
   end
 
   private
+
+  def airport_options
+    @airport_options = Airport.all.order(:name).map { |airport| [airport.name, airport.id] }
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_flight

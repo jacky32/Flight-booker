@@ -2,13 +2,13 @@
 
 <h1>Flights</h1>
 
-<div id="flights">
-  <% @flights.each do |flight| %>
-    <%= render flight %>
-    <p>
-      <%= link_to "Show this flight", flight %>
-    </p>
-  <% end %>
+<div id="flight-form">
+  <%= render 'search_flight_form' %>
 </div>
 
-<%= link_to "New flight", new_flight_path %>
+<div id="flights">
+  <% @flights.each do |flight| %>
+    <%= render flight%>
+    <hr>
+  <% end %>
+</div>
