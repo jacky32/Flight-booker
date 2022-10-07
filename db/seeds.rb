@@ -18,7 +18,18 @@ BRU = Airport.create(name: 'Brussels', code: 'BRU')
 LTN = Airport.create(name: 'London', code: 'LTN')
 
 # Flights
-FLIGHT1 = Flight.create(departure_datetime: DateTime.new(2023, 4, 23, 22, 35, 0),
-                        arrival_datetime: DateTime.new(2023, 4, 23, 23, 40, 0),
-                        departure_airport_id: VIE.id,
-                        arrival_airport_id: PRG.id)
+now = DateTime.now.at_beginning_of_day
+a_week_in_future = now + 1.week
+
+Airport.all.each do |departure_air|
+  Airport.all.each do |arrival_air|
+    departure_date = rand(now..a_week_in_future) + rand(0..24).hours + (rand(0..12) * 5).minutes
+    arrival_date = departure_date + rand(0..4).hours + rand(0..60).minutes
+    Flight.create(
+      departure_datetime: departure_date,
+      arrival_datetime: arrival_date,
+      departure_airport_id: departure_air.id,
+      arrival_airport_id: arrival_air.id
+    )
+  end
+end
