@@ -2,7 +2,14 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, class_name: 'Airport'
   belongs_to :departure_airport, class_name: 'Airport'
 
-  def self.search(departure, arrival)
-    Flight.where(departure_airport_id: departure, arrival_airport_id: arrival).order(:departure_datetime)
+  def self.search(departure, arrival, departure_year, departure_month)
+    departure_date = DateTime.new(departure_year.to_i, departure_month.to_i)
+    dates = [departure_date..departure_date.end_of_month]
+    flights = Flight.where(departure_airport_id: departure, arrival_airport_id: arrival)
+    dated_flights = flights
+    dates.each do |date|
+      dated_flights = flights.where(departure_datetime: date)
+    end
+    dated_flights.order(:departure_datetime)
   end
 end

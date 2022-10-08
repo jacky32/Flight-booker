@@ -19,12 +19,14 @@ LTN = Airport.create(name: 'London', code: 'LTN')
 
 # Flights
 now = DateTime.now.at_beginning_of_day
-a_week_in_future = now + 1.week
+a_year_in_future = now + 1.year
 
-4.times do
+50.times do
   Airport.all.each do |departure_air|
     Airport.all.each do |arrival_air|
-      departure_date = rand(now..a_week_in_future) + rand(0..24).hours + (rand(0..12) * 5).minutes
+      next if departure_air == arrival_air
+
+      departure_date = rand(now..a_year_in_future) + rand(0..24).hours + (rand(0..12) * 5).minutes
       arrival_date = departure_date + rand(0..4).hours + rand(0..60).minutes
       Flight.create(
         departure_datetime: departure_date,
