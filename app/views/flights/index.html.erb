@@ -1,14 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Flights</h1>
+<h1>Flight booker</h1>
 
 <div id="flight-form">
   <%= render 'search_flight_form' %>
 </div>
 
-<div id="flights">
-  <% @flights.each do |flight| %>
-    <%= render flight%>
-    <hr>
-  <% end %>
-</div>
+
+<% unless @flights.nil? %>
+  <h2>Choose a flight</h2>
+  <div id="flights">
+    <% @flights.each do |flight| %>
+      <%= render flight%>
+    <% end %>
+  </div>  
+<% end %>
+

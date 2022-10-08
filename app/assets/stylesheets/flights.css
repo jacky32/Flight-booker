@@ -1,0 +1,34 @@
+#flights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flight {
+  min-width: 320px;
+  min-height: 320px;
+  padding: 16px;
+}
+
+.flight.selected {
+  background-color: bisque;
+}
+
+#flight-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#flight-form > form {
+  display: grid;
+  gap: 6px;
+}
+
+#flight-form > form > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}

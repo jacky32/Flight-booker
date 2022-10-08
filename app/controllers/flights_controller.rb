@@ -50,7 +50,26 @@ class FlightsController < ApplicationController
     redirect_to flights_url, notice: 'Flight was successfully destroyed.'
   end
 
+  def select
+    @flight = Flight.find(params[:flight_id])
+
+    redirect_to flight_path(@flight)
+  end
+
+  def selected_flight_class(selected_flight)
+    if params[:selected].to_i == selected_flight.id.to_i
+      'selected'
+    else
+      ''
+    end
+  end
+  helper_method :selected_flight_class
+
   private
+
+  def flight
+    @flight ||= Flight.find(params[:id])
+  end
 
   def airport_options
     @airport_options = Airport.all.order(:name).map { |airport| [airport.name, airport.id] }

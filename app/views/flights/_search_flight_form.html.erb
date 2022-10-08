@@ -1,9 +1,20 @@
 <%= form_with method: :get do |f| %>
-    <%= f.label :departure_airport_id %>
-    <%= f.select :departure_airport_id, @airport_options, selected: params[:departure_airport_id] %>
-    <%= f.label :arrival_airport_id %>
-    <%= f.select :arrival_airport_id, @airport_options, selected: params[:arrival_airport_id] %>
-    <%= f.date_select :departure_date, default: { month: Date.today.month, year: Date.today.year }, start_year: Date.today.year, end_year: 2023, order: [:month, :year] %>
+    <div>
+        <%= f.label :departure_airport_id %>
+        <%= f.select :departure_airport_id, @airport_options, selected: params[:departure_airport_id] %>
+    </div>
+    <div>
+        <%= f.label :arrival_airport_id %>
+        <%= f.select :arrival_airport_id, @airport_options, selected: params[:arrival_airport_id] %>
+    </div>
+    <div>
+        <%= f.label :passengers %>
+        <%= f.select :passengers, [1, 2, 3, 4], selected: params[:passengers], default: 1 %>
+    </div>
+    <div>
+        <%= f.label :departure_date %>
+        <%= f.date_select :departure_date, default: { month: Date.today.month, year: Date.today.year }, start_year: Date.today.year, end_year: 2023, order: [:month, :year] %>
+    </div>
     <%= f.submit "Search" %>
 <% end %>
   
