@@ -9,6 +9,14 @@
   <div>
     <div><%= @flight.departure_airport.name %> -> <%= @flight.arrival_airport.name %></div>
     <div><%= @flight.departure_date_formatted %> -> <%= @flight.arrival_date_formatted %></div>
+    <div>
+      
+      <% if params[:passengers].to_i == 1 %>
+        1 passenger  
+      <% else %>
+        <%= params[:passengers] %> passengers
+      <% end %>      
+    </div>
   </div>
 
   <%= link_to 'Back', :back %>
