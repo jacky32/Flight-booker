@@ -15,6 +15,11 @@
   padding: 16px;
 }
 
+.flight > a {
+  width: 100%;
+  height: 100%;
+}
+
 .flight.selected {
   background-color: bisque;
 }

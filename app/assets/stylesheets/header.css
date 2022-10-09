@@ -16,11 +16,6 @@ header > a:first-child {
   color: rgb(19, 31, 31);
   font-size: 32px;
   font-weight: 600;
-  text-decoration: none;
-}
-
-#header-logo:visited {
-  color: rgb(19, 31, 31);
 }
 
 .header-button {
@@ -30,17 +25,11 @@ header > a:first-child {
   min-width: 100%;
   min-height: 100%;
 
-  color: rgb(19, 31, 31);
   background-color: white;
   border: none;
   font-size: 16px;
-  text-decoration: none;
 }
 
 .header-button:hover {
   background-color: rgb(236, 236, 236);
-}
-
-.header-button:visited {
-  color: rgb(19, 31, 31);
 }

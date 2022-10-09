@@ -18,3 +18,13 @@
   margin: 0;
   padding: 0;
 }
+
+a {
+  text-decoration: none;
+  color: rgb(19, 31, 31);
+  font-weight: normal;
+}
+
+a:visited {
+  color: rgb(19, 31, 31);
+}
