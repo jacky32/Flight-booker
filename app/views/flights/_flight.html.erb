@@ -20,5 +20,5 @@
     <%= flight.arrival_datetime.strftime("%R %d. %m. %Y") %>
   </p>
 
-  <%= link_to "Select", flights_path(departure_airport_id: params[:departure_airport_id], arrival_airport_id: params[:arrival_airport_id], passenger: params[:passenger], "departure_date(2i)": params["departure_date(2i)"], "departure_date(1i)": params["departure_date(1i)"], selected: flight.id) %>
+  <%= link_to "Select", flights_path(departure_airport_id: params[:departure_airport_id], arrival_airport_id: params[:arrival_airport_id], passengers: params[:passengers], "departure_date(2i)": params["departure_date(2i)"], "departure_date(1i)": params["departure_date(1i)"], selected: flight.id) %>
 </div>

@@ -14,5 +14,9 @@
       <% end %>
     </div>
   <% end %>
+
+  <% if flight_selected? %>
+    <%= link_to 'Continue booking', new_booking_path(flight_id: params[:selected], passengers: params[:passengers]) %>
+  <% end %>
 </div>
 

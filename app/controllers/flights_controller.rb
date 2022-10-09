@@ -59,6 +59,11 @@ class FlightsController < ApplicationController
   end
   helper_method :selected_flight_class
 
+  def flight_selected?
+    !params[:selected].nil?
+  end
+  helper_method :flight_selected?
+
   private
 
   def flight
