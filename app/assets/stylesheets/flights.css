@@ -5,8 +5,8 @@
   align-items: center;
   gap: 16px;
   padding: 12px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto 20px auto;
+  max-width: 1200px;
 }
 
 .flight {
@@ -38,6 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 340px;
 }
 
 #flight-form > form {
@@ -54,7 +55,7 @@
 
 #flight-form > form > div > select,
 #flight-form > form > div > div > select {
-  font-size: 16px;
+  /* font-size: 16px; */
   padding: 4px 2px 4px 6px;
   /* appearance: none; */
   border: none;
@@ -63,7 +64,7 @@
 
 #flight-form > form > input[type="submit"] {
   border: none;
-  font-size: 16px;
+  /* font-size: 16px; */
   border-radius: 4px;
   padding: 4px 8px;
 }
@@ -82,4 +83,23 @@
 
 #flight-booking:hover {
   background-color: rgb(70, 177, 79);
+}
+#flight-destination {
+  margin-top: 20px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#flight-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#flight-date > div:first-child {
+  font-weight: 600;
+  font-size: 18px;
 }

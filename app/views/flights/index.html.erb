@@ -2,8 +2,12 @@
   <%= render 'search_flight_form' %>
 </div>
 
-
-<% unless @flights.nil? %>
+<% unless @flights.nil? || @flights.empty? %>
+  <h2 id="flight-destination">
+      <%= @flights[0].departure_airport.name %> (<%= @flights[0].departure_airport.code %>)
+        ➜
+      <%= @flights[0].arrival_airport.name %> (<%= @flights[0].arrival_airport.code %>)
+  </h2>
   <div id="flights">
     <% @flights.each do |flight| %>
       <%= render flight %>
@@ -11,10 +15,10 @@
   </div>
 <% end %>
 
-  <% if flight_selected? %>
-    <%= link_to new_booking_path(flight_id: params[:selected], passengers: params[:passengers]) do %>
-      <div id="flight-booking">
-        Continue booking
-      </div>
-    <% end %>
+<% if flight_selected? %>
+  <%= link_to new_booking_path(flight_id: params[:selected], passengers: params[:passengers]) do %>
+    <div id="flight-booking">
+      Continue booking
+    </div>
   <% end %>
+<% end %>

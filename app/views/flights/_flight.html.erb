@@ -2,25 +2,10 @@
 
 <%= link_to flights_path(departure_airport_id: params[:departure_airport_id], arrival_airport_id: params[:arrival_airport_id], passengers: params[:passengers], "departure_date(2i)": params["departure_date(2i)"], "departure_date(1i)": params["departure_date(1i)"], selected: flight.id) do %>
   <div id="<%= dom_id flight %>" class="flight <%= selected_flight_class(flight)%>">
-    <p>
-      <strong>Departure airport:</strong>
-      <%= flight.departure_airport.name %> (<%= flight.departure_airport.code %>)
-    </p>
-
-    <p>
-      <strong>Arrival airport:</strong>
-      <%= flight.arrival_airport.name %> (<%= flight.arrival_airport.code %>)
-    </p>
-
-    <p>
-      <strong>Departure:</strong>
-      <%= flight.departure_datetime.strftime("%R %d. %m. %Y") %>
-    </p>
-
-    <p>
-      <strong>Arrival:</strong>
-      <%= flight.arrival_datetime.strftime("%R %d. %m. %Y") %>
-    </p>
+    <div id="flight-date">
+      <div><%= flight.date_days %></div>
+      <div><%= flight.date_hours %></div>
+    </div>
   </div>
 <% end %>
 

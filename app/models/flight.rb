@@ -23,4 +23,30 @@ class Flight < ApplicationRecord
     end
     dated_flights.order(:departure_datetime)
   end
+
+  def date_days
+    if !same_day?
+      if same_month?
+        "#{departure_datetime.strftime('%d.')} ➜ #{arrival_datetime.strftime('%d. %m.')}"
+      else
+        "#{departure_datetime.strftime('%d. %m.')} ➜ #{arrival_datetime.strftime('%d. %m.')}"
+      end
+    else
+      departure_datetime.strftime('%d. %m.')
+    end
+  end
+
+  def date_hours
+    "#{departure_datetime.strftime('%R')} ➜ #{arrival_datetime.strftime('%R')}"
+  end
+
+  private
+
+  def same_day?
+    arrival_datetime.day == departure_datetime.day
+  end
+
+  def same_month?
+    arrival_datetime.month == departure_datetime.month
+  end
 end
