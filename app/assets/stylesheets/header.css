@@ -1,6 +1,6 @@
 header {
   display: grid;
-  grid-template-columns: auto 80px 80px;
+  grid-template-columns: auto 120px 120px;
   grid-template-rows: 60px;
   justify-items: center;
   align-items: center;

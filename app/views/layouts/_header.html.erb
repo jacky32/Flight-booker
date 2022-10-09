@@ -1,7 +1,13 @@
 <header>
   <%= link_to root_path do %>  
     <h1>Flight booker</h1>
-  <% end  %>
-  <%= link_to 'Log in', new_passenger_session_path %>
-  <%= link_to 'Sign up', new_passenger_registration_path %>
+  <% end %>
+
+  <% if passenger_signed_in? %>
+    <%= link_to 'My bookings', passenger_path(current_passenger) %>
+    <%= button_to 'Sign out', destroy_passenger_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Log in', new_passenger_session_path %>
+    <%= link_to 'Sign up', new_passenger_registration_path %>
+  <% end %>
 </header>

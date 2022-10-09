@@ -7,6 +7,10 @@ module ApplicationHelper
     @resource ||= Passenger.new
   end
 
+  def resource_class
+    Passenger
+  end
+
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:passenger]
   end

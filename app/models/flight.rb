@@ -3,6 +3,14 @@ class Flight < ApplicationRecord
   belongs_to :departure_airport, class_name: 'Airport'
   has_many :bookings
 
+  def arrival_date_formatted
+    arrival_datetime.strftime('%R %d. %m. %Y')
+  end
+
+  def departure_date_formatted
+    departure_datetime.strftime('%R %d. %m. %Y')
+  end
+
   def self.search(departure, arrival, departure_year, departure_month)
     return if departure_month.nil?
 

@@ -1,4 +1,15 @@
 <div id="booking-section">
 
+  
+  <% unless passenger_signed_in? %>
   <%= render 'devise/sessions/form_new' %>
+  <%= render 'devise/registrations/form_new' %>
+  <% end %>
+
+  <div>
+    <div><%= @flight.departure_airport.name %> -> <%= @flight.arrival_airport.name %></div>
+    <div><%= @flight.departure_date_formatted %> -> <%= @flight.arrival_date_formatted %></div>
+  </div>
+
+  <%= link_to 'Back', :back %>
 </div>
