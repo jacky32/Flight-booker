@@ -1,0 +1,13 @@
+header {
+  display: grid;
+  grid-template-columns: auto 80px 80px;
+  grid-template-rows: 60px;
+  justify-items: center;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+header > a:first-child {
+  justify-self: baseline;
+}

@@ -1,2 +1,7 @@
-
-<h1>Flight booker</h1>
+<header>
+  <%= link_to root_path do %>  
+    <h1>Flight booker</h1>
+  <% end  %>
+  <%= link_to 'Log in', new_passenger_session_path %>
+  <%= link_to 'Sign up', new_passenger_registration_path %>
+</header>
