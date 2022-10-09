@@ -1,18 +1,28 @@
-#flight-section {
-  padding: 60px;
-}
-
 #flights {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+  padding: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .flight {
+  position: relative;
+  z-index: 2;
   min-width: 320px;
-  min-height: 160px;
-  padding: 16px;
+  padding: 24px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px grey;
+  transition: 0.01s linear;
+}
+
+.flight:hover {
+  transform: scale(1.01);
+  box-shadow: 4px 4px 5px grey;
 }
 
 .flight > a {
@@ -32,12 +42,44 @@
 
 #flight-form > form {
   display: grid;
-  gap: 6px;
+  gap: 8px;
 }
 
 #flight-form > form > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+}
+
+#flight-form > form > div > select,
+#flight-form > form > div > div > select {
+  font-size: 16px;
+  padding: 4px 2px 4px 6px;
+  /* appearance: none; */
+  border: none;
+  border-radius: 4px;
+}
+
+#flight-form > form > input[type="submit"] {
+  border: none;
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+#flight-booking {
+  font-weight: 600;
+  color: rgb(245, 245, 245);
+  font-size: 20px;
+  padding: 8px 0px 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(75, 192, 85);
+  transition: 0.2s linear;
+}
+
+#flight-booking:hover {
+  background-color: rgb(70, 177, 79);
 }

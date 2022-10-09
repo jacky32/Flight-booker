@@ -13,7 +13,7 @@
     </div>
     <div>
         <%= f.label :departure_date %>
-        <%= f.date_select :departure_date, default: { month: params["departure_date(2i)"], year: params["departure_date(1i)"] }, start_year: Date.today.year, end_year: 2023, order: [:month, :year] %>
+        <div><%= f.date_select :departure_date, default: { month: params["departure_date(2i)"], year: params["departure_date(1i)"] }, start_year: Date.today.year, end_year: 2023, order: [:month, :year] %></div>
     </div>
     <%= f.submit "Search" %>
 <% end %>

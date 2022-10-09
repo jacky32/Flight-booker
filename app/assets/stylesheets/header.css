@@ -1,11 +1,10 @@
 header {
   display: grid;
   grid-template-columns: auto 120px 120px;
-  grid-template-rows: 60px;
+  grid-template-rows: 64px;
   justify-items: center;
   align-items: center;
   padding-left: 40px;
-  padding-right: 40px;
 }
 
 header > a:first-child {
@@ -14,7 +13,7 @@ header > a:first-child {
 
 #header-logo {
   color: rgb(19, 31, 31);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
 }
 
