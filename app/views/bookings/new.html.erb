@@ -1,24 +1,59 @@
+
+<div id="flight-booking-info" >
+  <div><%= @flight.destination %></div>
+  <div><%= @flight.date_days_with_years %></div>
+  <div><%= @flight.date_hours %></div>
+</div>
+
 <div id="booking-info">
+
   <% unless user_signed_in? %>
-  <%= render 'devise/sessions/form_new' %>
-  <%= render 'devise/registrations/form_new' %>
-  <% end %>
-  
-  <div>
-    <div id="flight-booking-info" >
-      <div><%= @flight.destination %></div>
-      <div><%= @flight.date_days_with_years %></div>
-      <div><%= @flight.date_hours %></div>
-    </div>
-    <div>
-      <%= form_with model: @booking do |f| %>
+
+    <%= form_with model: @booking do |f| %>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <h2>New user registration</h2>
+
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      <% end %>
+
+      <div id="flight-booking-form">
+        <div class="field">
           <%= f.label :passengers, "Number of passengers" %>
           <%= f.select :passengers, [1, 2, 3, 4], selected: @passengers %>
+        </div>
+      </div>
 
-      <% end %>
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+  <% end %>
+
+  <% end %>
         
-    </div>
-  </div>
 </div>
 
 <%= link_to 'Back', :back %>

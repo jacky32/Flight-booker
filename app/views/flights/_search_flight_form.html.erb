@@ -1,11 +1,21 @@
 <%= form_with method: :get do |f| %>
-    <div>
+    <div data-controller="bookings">
         <%= f.label :departure_airport_id %>
-        <%= f.select :departure_airport_id, @airport_options, selected: params[:departure_airport_id] %>
+        <%= f.select :departure_airport_id, @airport_options, 
+                            { include_blank: 'Select a city',
+                              selected: params[:departure_airport_id] },
+                            { required: true,
+                              data: 
+                              { action: "change->bookings#disableAirport" } } %>
     </div>
-    <div>
+    <div data-controller="bookings">
         <%= f.label :arrival_airport_id %>
-        <%= f.select :arrival_airport_id, @airport_options, selected: params[:arrival_airport_id] %>
+        <%= f.select :arrival_airport_id, @airport_options,
+                            { include_blank: 'Select a city', 
+                              selected: params[:arrival_airport_id] },
+                            { required: true,
+                              data: 
+                              { action: "change->bookings#disableAirport" } } %>
     </div>
     <div>
         <%= f.label :passengers %>
