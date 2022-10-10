@@ -36,8 +36,21 @@ class Flight < ApplicationRecord
     end
   end
 
+  def date_days_with_years
+    default = arrival_datetime.strftime('%d. %m. %Y')
+    return default if same_day?
+    return "#{departure_datetime.strftime('%d. %m. %Y')} ➜ #{default}" unless same_year?
+    return "#{departure_datetime.strftime('%d.')} ➜ #{default}" if same_month?
+
+    "#{departure_datetime.strftime('%d. %m.')} ➜ #{default}"
+  end
+
   def date_hours
     "#{departure_datetime.strftime('%R')} ➜ #{arrival_datetime.strftime('%R')}"
+  end
+
+  def destination
+    "#{departure_airport.name} ➜ #{arrival_airport.name}"
   end
 
   private
@@ -48,5 +61,9 @@ class Flight < ApplicationRecord
 
   def same_month?
     arrival_datetime.month == departure_datetime.month
+  end
+
+  def same_year?
+    arrival_datetime.year == departure_datetime.year
   end
 end

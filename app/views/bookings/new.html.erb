@@ -1,23 +1,24 @@
-<div id="booking-section">
-
-  
-  <% unless passenger_signed_in? %>
+<div id="booking-info">
+  <% unless user_signed_in? %>
   <%= render 'devise/sessions/form_new' %>
   <%= render 'devise/registrations/form_new' %>
   <% end %>
-
+  
   <div>
-    <div><%= @flight.departure_airport.name %> -> <%= @flight.arrival_airport.name %></div>
-    <div><%= @flight.departure_date_formatted %> -> <%= @flight.arrival_date_formatted %></div>
+    <div id="flight-booking-info" >
+      <div><%= @flight.destination %></div>
+      <div><%= @flight.date_days_with_years %></div>
+      <div><%= @flight.date_hours %></div>
+    </div>
     <div>
-      
-      <% if params[:passengers].to_i == 1 %>
-        1 passenger  
-      <% else %>
-        <%= params[:passengers] %> passengers
-      <% end %>      
+      <%= form_with model: @booking do |f| %>
+          <%= f.label :passengers, "Number of passengers" %>
+          <%= f.select :passengers, [1, 2, 3, 4], selected: @passengers %>
+
+      <% end %>
+        
     </div>
   </div>
-
-  <%= link_to 'Back', :back %>
 </div>
+
+<%= link_to 'Back', :back %>

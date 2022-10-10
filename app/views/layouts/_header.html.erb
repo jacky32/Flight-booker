@@ -1,11 +1,11 @@
 <header>
   <%= link_to 'Flight booker', root_path, id: 'header-logo'  %>
 
-  <% if passenger_signed_in? %>
-    <%= link_to 'My bookings', passenger_path(current_passenger), class: 'header-button' %>
-    <%= button_to 'Sign out', destroy_passenger_session_path, method: :delete, class: 'header-button' %>
+  <% if user_signed_in? %>
+    <%= link_to 'My bookings', user_path(current_user), class: 'header-button' %>
+    <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'header-button' %>
   <% else %>
-    <%= link_to 'Log in', new_passenger_session_path, class: 'header-button' %>
-    <%= link_to 'Sign up', new_passenger_registration_path, class: 'header-button' %>
+    <%= link_to 'Log in', new_user_session_path, class: 'header-button' %>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'header-button' %>
   <% end %>
 </header>

@@ -1,17 +1,17 @@
 module ApplicationHelper
   def resource_name
-    :passenger
+    :user
   end
 
   def resource
-    @resource ||= Passenger.new
+    @resource ||= User.new
   end
 
   def resource_class
-    Passenger
+    User
   end
 
   def devise_mapping
-    @devise_mapping ||= Devise.mappings[:passenger]
+    @devise_mapping ||= Devise.mappings[:user]
   end
 end
