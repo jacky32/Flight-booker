@@ -24,3 +24,17 @@
   justify-content: center;
   gap: 32px;
 }
+
+#booking-info > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+#booking-form {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}

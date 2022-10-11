@@ -1,6 +1,6 @@
 
 
-<%= link_to flights_path(departure_airport_id: params[:departure_airport_id], arrival_airport_id: params[:arrival_airport_id], passengers: params[:passengers], "departure_date(2i)": params["departure_date(2i)"], "departure_date(1i)": params["departure_date(1i)"], selected: flight.id) do %>
+<%= link_to flights_path(departure_airport_id: params[:departure_airport_id], arrival_airport_id: params[:arrival_airport_id], passenger_number: params[:passenger_number], "departure_date(2i)": params["departure_date(2i)"], "departure_date(1i)": params["departure_date(1i)"], selected: flight.id) do %>
   <div id="<%= dom_id flight %>" class="flight <%= selected_flight_class(flight)%>">
     <div id="flight-date">
       <div><%= flight.date_days %></div>

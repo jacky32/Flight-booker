@@ -18,8 +18,8 @@
                               { action: "change->bookings#disableAirport" } } %>
     </div>
     <div>
-        <%= f.label :passengers %>
-        <%= f.select :passengers, [1, 2, 3, 4], selected: params[:passengers] %>
+        <%= f.label :passenger_number %>
+        <%= f.select :passenger_number, [1, 2, 3, 4], selected: params[:passenger_number] %>
     </div>
     <div>
         <%= f.label :departure_date %>

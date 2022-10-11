@@ -16,7 +16,7 @@
 <% end %>
 
 <% if flight_selected? %>
-  <%= link_to new_booking_path(flight_id: params[:selected], passengers: params[:passengers]) do %>
+  <%= link_to new_booking_path(flight_id: params[:selected], passenger_number: params[:passenger_number]) do %>
     <div id="flight-booking">
       Continue booking
     </div>

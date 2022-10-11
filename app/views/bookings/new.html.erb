@@ -10,47 +10,104 @@
   <% unless user_signed_in? %>
 
     <%= form_with model: @booking do |f| %>
+      <div id="booking-form"> 
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <h2>New user registration</h2>
-
-        <div class="field">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        <div id="booking-registration-form">
+          <%= f.fields_for(resource, as: resource_name, url: registration_path(resource_name)) do |reg_f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <h2>New user registration</h2>
+            <div class="field">
+              <%= reg_f.label :name %><br />
+              <%= reg_f.text_field :name, autofocus: true, autocomplete: "name" %>
+            </div>
+            <div class="field">
+              <%= reg_f.label :email %><br />
+              <%= reg_f.email_field :email, autocomplete: "email" %>
+            </div>
+            <div class="field">
+              <%= reg_f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= reg_f.password_field :password, autocomplete: "new-password" %>
+            </div>
+            <div class="field">
+              <%= reg_f.label :password_confirmation %><br />
+              <%= reg_f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+          <% end %>
         </div>
 
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autocomplete: "email" %>
+        <div id="booking-details-form" data-controller="bookings">
+          <div class="field">
+            <%= f.label :passengers, "Number of passengers" %>
+            <%= f.select :passengers, [1, 2, 3, 4], { 
+                            selected: @passengers }, { 
+                            required: true, 
+                            data: {
+                              action: "change->bookings#displayPassengerForms"
+                            }} %>
+          </div>
+          <%= fields_for(@booking.passengers, []) do |pass_f| %>
+            <div id="passenger-fields">
+              <div class="passenger-info field">
+                <%= pass_f.label :name, "Passenger name" %>
+                <%= pass_f.text_field :name %>
+              </div>
+              <div class="passenger-info field">
+                <%= pass_f.label :name, "Passenger name" %>
+                <%= pass_f.text_field :name %>
+              </div>
+              <div class="passenger-info field">
+                <%= pass_f.label :name, "Passenger name" %>
+                <%= pass_f.text_field :name %>
+              </div>  
+            </div>
+          <% end %>
+            
+
         </div>
 
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-      <% end %>
-
-      <div id="flight-booking-form">
-        <div class="field">
-          <%= f.label :passengers, "Number of passengers" %>
-          <%= f.select :passengers, [1, 2, 3, 4], selected: @passengers %>
-        </div>
-      </div>
-
+      </div>  
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <%= f.submit "Confirm booking" %>
       </div>
-  <% end %>
+    <% end %>
+
+  <% else %>
+
+  <%= form_for @booking, url: bookings_path do |f| %>
+
+    <div id="booking-form"> 
+
+      <div id="booking-details-form" data-controller="bookings">
+        <div class="field">
+          <%= f.label :passenger_number, "Number of passengers" %>
+          <%= f.select :passenger_number, [1, 2, 3, 4], { 
+                          selected: @passenger_number }, { 
+                          required: true, 
+                          data: {
+                            action: "change->bookings#displayPassengerForms"
+                          }} %>
+        </div>
+        <div id="passenger-fields">
+          <%= f.fields_for :passengers do |pass_f| %>
+              <div class="passenger-info field">
+                <%= pass_f.label :name, "Passenger #{pass_f.index + 1} name" %>
+                <%= pass_f.text_field :name %>
+            </div>
+          <% end %>
+        </div>
+          
+      </div>
+
+      </div>
+      <%= f.hidden_field :flight_id, value: @flight.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <div class="actions">
+        <%= f.submit "Confirm booking" %>
+      </div>
+    <% end %>
 
   <% end %>
         
