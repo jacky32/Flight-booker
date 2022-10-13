@@ -9,8 +9,12 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    unless user_signed_in?
+      user = create_new_user
+      sign_in user
+    end
 
+    @booking = Booking.new(booking_params.merge(user_id: current_user.id))
     if @booking.save
       redirect_to booking_url(@booking), notice: 'Booking was successfully created.'
     else
@@ -24,8 +28,18 @@ class BookingsController < ApplicationController
 
   private
 
+  def create_new_user
+    user = User.new(new_user_params[:user])
+    render :new, status: :unprocessable_entity unless user.save
+    user
+  end
+
   def booking_params
-    params.require(:booking).permit(:flight_id, :user_id, :passenger_number,
+    params.require(:booking).permit(:flight_id, :passenger_number,
                                     passengers_attributes: %i[id name])
+  end
+
+  def new_user_params
+    params.require(:booking).permit(user: %i[name email password password_confirmation])
   end
 end

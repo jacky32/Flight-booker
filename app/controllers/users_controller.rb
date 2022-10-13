@@ -20,6 +20,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:flight).permit(:email, :password, :password_confirmation)
+    params.require(:flight).permit(:name, :email, :password, :password_confirmation)
   end
 end
