@@ -1,0 +1,13 @@
+<div id="booking-show-section">
+  <div class="booking-card">
+    <div class="booking-card-destination"><%= @booking.flight.destination %></div>
+    <div class="booking-card-date"><%= @booking.flight.date_days_with_years %></div>
+    <div><strong>Passengers</strong>:
+      <ul class="booking-card-passengers">          
+        <% @booking.passengers.each do |passenger| %>
+          <li><%= passenger.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

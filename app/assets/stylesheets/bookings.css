@@ -44,3 +44,48 @@ form#new_booking > input[type="submit"] {
   border-radius: 4px;
   padding: 4px 8px;
 }
+
+#booking-show-title {
+  font-size: 24px;
+  text-align: center;
+  margin: 16px;
+}
+
+#booking-show-section {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-card {
+  max-width: 360px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  box-shadow: 2px 2px 5px grey;
+  transition: 0.01s linear;
+}
+
+.booking-card:hover {
+  transform: scale(1.01);
+  box-shadow: 4px 4px 5px grey;
+}
+
+.booking-card-destination {
+  font-size: 24px;
+  align-self: center;
+}
+
+.booking-card-date {
+  font-size: 20px;
+  margin-bottom: 8px;
+  align-self: center;
+}
+
+.booking-card-passengers {
+  padding-left: 16px;
+}

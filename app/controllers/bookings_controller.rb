@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
+
   def new
     @booking = Booking.new
     @flight = Flight.find(params[:flight_id])
@@ -16,7 +18,7 @@ class BookingsController < ApplicationController
 
     @booking = Booking.new(booking_params.merge(user_id: current_user.id))
     if @booking.save
-      redirect_to booking_url(@booking), notice: 'Booking was successfully created.'
+      redirect_to booking_url(@booking)
     else
       render :new, status: :unprocessable_entity
     end

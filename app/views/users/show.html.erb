@@ -1,0 +1,22 @@
+<h1 id="booking-show-title"><%= current_user.name%>'s bookings </h1>
+<div id="booking-show-section">
+  <% if current_user.bookings.nil? %>
+    <p>No bookings</p>
+  <% else %>
+    <% current_user.bookings_ordered_by_flight_date.each do |booking| %>
+      <%= link_to booking_path(booking) do %>
+        <div class="booking-card">
+          <div class="booking-card-destination"><%= booking.flight.destination %></div>
+          <div class="booking-card-date"><%= booking.flight.date_days_with_years %></div>
+          <div><strong>Passengers</strong>:
+            <ul class="booking-card-passengers">          
+              <% booking.passengers.each do |passenger| %>
+                <li><%= passenger.name %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
